@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Hello World!",
   "main": "main.js",
-  "author": "Jane Doe",
+  "author": "xii",
   "license": "MIT",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.4",
@@ -11,7 +11,8 @@
     "@electron-forge/maker-rpm": "^6.0.4",
     "@electron-forge/maker-squirrel": "^6.0.4",
     "@electron-forge/maker-zip": "^6.0.4",
-    "electron": "^22.0.0"
+    "electron": "^22.0.0",
+    "electron-reloader": "^1.2.3"
   },
   "scripts": {
     "start": "electron-forge start",
@@ -19,6 +20,7 @@
     "make": "electron-forge make"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "menubar": "^9.2.3"
   }
 }
