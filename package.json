@@ -1,7 +1,7 @@
 {
-  "name": "my-electron-app",
+  "name": "google-trans-menubar",
   "version": "1.0.0",
-  "description": "Hello World!",
+  "description": "Google translation in your menubar",
   "main": "main.js",
   "author": "xii",
   "license": "MIT",
