@@ -1,2 +1,4 @@
 # my-electron-app
-created with electron for using any website in menubar on Mac.
+在 menubar 中使用 Google Translation.（For MacOS）
+
+created with electron.
