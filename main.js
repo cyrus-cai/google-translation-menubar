@@ -18,11 +18,15 @@ const image = nativeImage.createFromPath(
 
 app.on("ready", () => {
     const tray = new Tray(image);
-    menubar({
+
+    const mb = menubar({
         index: 'https://translate.google.com/',
         browserWindow: {
             width: 450,
             height: 600,
+        },
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.js')
         },
         tray,
         showOnAllWorkspaces: true,
@@ -30,6 +34,15 @@ app.on("ready", () => {
         showDockIcon: false,
         icon: image,
     });
+
+    mb.on("ready", () => {
+        if (process.platform !== "darwin") {
+            window.setSkipTaskbar(true);
+        } else {
+            app.dock.hide();
+        }
+    })
+
 })
 
 app.on('window-all-closed', () => {
