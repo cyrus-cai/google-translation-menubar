@@ -2,6 +2,8 @@ const {
     app,
     nativeImage,
     Tray,
+    Menu,
+    shell,
 } = require('electron')
 const { menubar } = require("menubar");
 const path = require('path')
@@ -25,9 +27,6 @@ app.on("ready", () => {
             width: 450,
             height: 600,
         },
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        },
         tray,
         showOnAllWorkspaces: true,
         preloadWindow: true,
@@ -36,11 +35,49 @@ app.on("ready", () => {
     });
 
     mb.on("ready", () => {
+        const { window } = mb;
+
         if (process.platform !== "darwin") {
             window.setSkipTaskbar(true);
         } else {
             app.dock.hide();
         }
+
+        const contextMenuTemplate = [
+            {
+                label: "Quit",
+                accelerator: "Command+Q",
+                click: () => {
+                    app.quit();
+                },
+            },
+            {
+                label: "Reload",
+                accelerator: "Command+R",
+                click: () => {
+                    window.reload();
+                },
+            },
+            {
+                label: "Open in browser",
+                click: () => {
+                    shell.openExternal("https://translate.google.com/");
+                },
+            },
+            {
+                type: "separator",
+            },
+            {
+                label: "View on GitHub",
+                click: () => {
+                    shell.openExternal("https://github.com/xii-kii/google-translation-menubar");
+                },
+            },
+        ];
+
+        tray.on("right-click", () => {
+            mb.tray.popUpContextMenu(Menu.buildFromTemplate(contextMenuTemplate));
+        });
     })
 
 })
