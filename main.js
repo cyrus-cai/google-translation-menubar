@@ -17,6 +17,7 @@ const image = nativeImage.createFromPath(
     path.join(__dirname, `images/newiconTemplate.png`)
 );
 
+app.setLoginItemSettings({ openAtLogin: true })
 
 app.on("ready", () => {
     const tray = new Tray(image);
