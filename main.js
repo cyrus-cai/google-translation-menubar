@@ -35,6 +35,7 @@ app.on("ready", () => {
         icon: image,
     });
 
+
     mb.on("ready", () => {
         const { window } = mb;
 

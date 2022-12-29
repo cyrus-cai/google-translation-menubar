@@ -1,5 +1,12 @@
 module.exports = {
-  packagerConfig: {},
+  packagerConfig: {
+    name: "G_trans",
+    executableName: "G_trans",
+    icon: "images/icon",
+    extendInfo: {
+      LSUIElement: "true",
+    },
+  },
   rebuildConfig: {},
   makers: [
     {
